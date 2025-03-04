@@ -1,9 +1,16 @@
-## To do List
+
+# 📝 To-Do List - Diagrama do Banco de Dados
+
+Abaixo está a estrutura do banco de dados representada em um diagrama UML:
 
 ```mermaid
 classDiagram
     class ToDoList {
         +String name
+        +List~Tasks~ tasks
+        +List~Features~ features
+        +TaskDetails taskDetails
+        +List~News~ news
     }
 
     class Tasks {
@@ -29,9 +36,7 @@ classDiagram
     }
 
     %% Relações do Banco de Dados
-    ToDoList "1" --> "1" Tasks : possui
-    ToDoList "1" --> "N" Features : pode ter várias
-    ToDoList "1" --> "1" TaskDetails : possui
-    ToDoList "1" --> "N" News : pode ter várias
-```
-
+    ToDoList "1" --o "N" Tasks : contém
+    ToDoList "1" --o "N" Features : possui
+    ToDoList "1" --o "1" TaskDetails : tem
+    ToDoList "1" --o "N" News : possui
